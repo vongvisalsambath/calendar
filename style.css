@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --time-font-size: 4rem;
+  --front-clr: #FF8383;
+  --back-right-clr: #FFE893;
+  --back-left-clr: #1F509A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.calendar {
+  list-style: none;
+}
+
+.calendar li {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 110px;
+  height: 110px;
+  padding: 8px;
+  border-radius: 12px;
+  color: white;
+}
+
+.front {
+  position: relative;
+  background-color: var(--front-clr);
+  z-index: 1;
+}
+
+.back-right {
+  background-color: var(--back-right-clr);
+  transform: rotate(-5deg) translateY(5px) translateX(10px);
+  transition: all .4s cubic-bezier(.5, .35, .15, 1.4);
+}
+
+.back-left {
+  background-color: var(--back-left-clr);
+  transform: rotate(5deg) translateY(5px) translateX(-10px);
+  transition: all .4s cubic-bezier(.5, .35, .15, 1.4);
+}
+
+.calendar:hover .back-right {
+  transform: rotate(0deg) translateY(0) translateX(0);
+}
+
+.calendar:hover .back-left {
+  transform: rotate(0deg) translateY(0) translateX(0);
+}
+
+.front .cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .4s cubic-bezier(.5, .35, .15, 1.4);
+}
+
+.front .month {
+  font-size: 0.8rem;
+}
+
+.front .big-date {
+  font-size: 2.5rem;
+}
+
+.front .day-of-week {
+  font-size: 0.8rem;
+}
+
+.front .time {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-size: var(--time-font-size);
+  opacity: 0;
+  transition: all .4s cubic-bezier(.5, .35, .15, 1.4);
+}
+
+.calendar.full .cover {
+  scale: 2;
+  opacity: 0;
+}
+
+.calendar.full .time {
+  opacity: 1;
+}
+
+.calendar.full .back-right {
+  transform: rotate(-5deg) translateX(100px) translateY(5px);
+}
+
+.calendar.full .back-left {
+  transform: rotate(5deg) translateX(-100px) translateY(5px);
+}
+
+.back-left,
+.back-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-right .second,
+.back-left .hour {
+  font-size: var(--time-font-size);
+}
+
+.front .year,
+.front .small-date {
+  position: absolute;
+  left: 50%;
+  color: var(--front-clr);
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: all .4s cubic-bezier(.5, .35, .15, 1.4);
+}
+
+.front .year {
+  font-weight: 100;
+}
+
+.front .small-date {
+  transform: translateX(-50%) translateY(-20px);
+}
+
+.calendar.full .front .year {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-40px);
+}
+
+.calendar.full .front .small-date {
+  opacity: 1;
+  transform: translateX(-50%) translateY(15px);
+}
+
+.back-right .month,
+.back-left .day-of-week {
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(30px);
+  transition: all .4s cubic-bezier(.5, .35, .15, 1.4);
+}
+
+.back-right .month {
+  color: var(--back-right-clr);
+}
+
+.back-left .day-of-week {
+  color: var(--back-left-clr);
+}
+
+.calendar.full .back-right .month {
+  opacity: 1;
+  transform: translateX(-50%) translateY(75px);
+}
+
+.calendar.full .back-left .day-of-week {
+  opacity: 1;
+  transform: translateX(-50%) translateY(75px);
+}
