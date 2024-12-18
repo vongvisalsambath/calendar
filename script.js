@@ -82,7 +82,12 @@ $calendar.addEventListener('mousedown', () => {
 });
 
 $calendar.addEventListener('touchstart', () => {
-  alert('touchstart')
+  alert('touchstart');
+  $calendar.classList.add('full');
+});
+
+$calendar.addEventListener('pointerdown', () => {
+  alert('pointer down');
   $calendar.classList.add('full');
 });
 
